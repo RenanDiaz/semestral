@@ -1,0 +1,12 @@
+#agregar {
+  float: right;
+}
+
+.centered, .centered th {
+  text-align: center;
+}
+
+.colbox {
+  margin-left: 0px;
+  margin-right: 0px;
+}
