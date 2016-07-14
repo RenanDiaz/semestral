@@ -22,9 +22,9 @@
 
           <div class="form-group text-left">
             <input id="btn_update" name="btn_update" type="submit" class="btn btn-primary" value="Guardar">
-            <input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger" value="Cancelar" onclick="window.history.back()">
+            <a id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger" href="../../unidad"/>Cancelar</a>
           </div>
-          
+
         </fieldset>
         <?php echo form_close(); ?>
         <?php echo $this->session->flashdata('msg'); ?>
