@@ -45,8 +45,8 @@ class unidad extends CI_Controller {
         'descripcion' => $this->input->post('descripcion'),
       );
 
-      $this->db->update('unidad', $data);
       $this->db->where('id', $id);
+      $this->db->update('unidad', $data);
 
       $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Unidad editada con &eacute;xito.</div>');
       redirect('unidad');

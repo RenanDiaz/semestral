@@ -49,8 +49,8 @@ class gestor extends CI_Controller {
         'apellido' => $this->input->post('apellido')
       );
 
-      $this->db->update('gestor', $data);
       $this->db->where('id', $id);
+      $this->db->update('gestor', $data);
 
       $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Gestor editado con &eacute;xito.</div>');
       redirect('gestor');

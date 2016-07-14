@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 well">
         <legend>Editar documento</legend>
-        <?php echo form_open("documento/editar"); ?>
+        <?php echo form_open("documento/editar/".$documento[0]->id); ?>
         <fieldset>
 
           <div class="form-group">
@@ -56,9 +56,10 @@
           </div>
 
           <div class="form-group text-left">
-            <input id="btn_update" name="btn_update" type="submit" class="btn btn-primary" value="Guardar" />
-            <input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger" value="Cancelar" onclick="window.history.back()"/>
+            <input id="btn_update" name="btn_update" type="submit" class="btn btn-primary" value="Guardar">
+            <input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger" value="Cancelar" onclick="window.history.back()">
           </div>
+
         </fieldset>
         <?php echo form_close(); ?>
         <?php echo $this->session->flashdata('msg'); ?>

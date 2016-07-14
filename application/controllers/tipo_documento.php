@@ -45,8 +45,8 @@ class tipo_documento extends CI_Controller {
         'descripcion' => $this->input->post('descripcion'),
       );
 
-      $this->db->update('tipo_documento', $data);
       $this->db->where('id', $id);
+      $this->db->update('tipo_documento', $data);
 
       $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Tipo de documento editado con &eacute;xito.</div>');
       redirect('tipo_documento');

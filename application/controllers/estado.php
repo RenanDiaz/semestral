@@ -42,13 +42,13 @@ class estado extends CI_Controller {
       $this->load->view('estados_editar_view', $data);
     } else {
       $data = array(
-        'descripcion' => $this->input->post('descripcion'),
+        'descripcion' => $this->input->post('descripcion')
       );
 
-      $this->db->update('estado', $data);
       $this->db->where('id', $id);
+      $this->db->update('estado', $data);
 
-      $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">estado editado con &eacute;xito.</div>');
+      $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Estado editado con &eacute;xito.</div>');
       redirect('estado');
     }
   }

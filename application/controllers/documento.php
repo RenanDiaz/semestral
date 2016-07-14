@@ -74,8 +74,8 @@ class documento extends CI_Controller {
         'archivo' => $this->input->post('archivo')
       );
 
-      $this->db->update('documento', $data);
       $this->db->where('id', $id);
+      $this->db->update('documento', $data);
 
       $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Documento editado con &eacute;xito.</div>');
       redirect('documento');
