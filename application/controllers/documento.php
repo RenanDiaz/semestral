@@ -11,6 +11,23 @@ class documento extends CI_Controller {
 
   public function index() {
     $documentos = $this->documento_model->get_documentos();
+
+    $gestor = $documentos[0]->gestor;
+    $this->load->model('gestor_model');
+    $documentos[0]->gestor = $this->gestor_model->get_gestor($gestor);
+
+    $unidad = $documentos[0]->unidad;
+    $this->load->model('unidad_model');
+    $documentos[0]->unidad = $this->unidad_model->get_unidad($unidad);
+
+    $tipo_documento = $documentos[0]->tipo_documento;
+    $this->load->model('tipo_documento_model');
+    $documentos[0]->tipo_documento = $this->tipo_documento_model->get_tipo_documento($tipo_documento);
+
+    $estado = $documentos[0]->estado;
+    $this->load->model('estado_model');
+    $documentos[0]->estado = $this->estado_model->get_estado($estado);
+
     $data['documentos'] = $documentos;
     $this->load->view('documentos_view', $data);
   }

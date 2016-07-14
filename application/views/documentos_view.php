@@ -32,25 +32,25 @@
                 <td><?php echo $documentos[$i]->nombre; ?></td>
                 <td><?php echo $documentos[$i]->descripcion; ?></td>
                 <td><?php echo $documentos[$i]->fecha; ?></td>
-                <td><?php echo $documentos[$i]->gestor; ?></td>
-                <td><?php echo $documentos[$i]->unidad; ?></td>
-                <td><?php echo $documentos[$i]->tipo_documento; ?></td>
-                <td><?php echo $documentos[$i]->estado; ?></td>
+                <td><?php echo $documentos[$i]->gestor[0]->nombre." ".$documentos[$i]->gestor[0]->apellido; ?></td>
+                <td><?php echo $documentos[$i]->unidad[0]->descripcion; ?></td>
+                <td><?php echo $documentos[$i]->tipo_documento[0]->descripcion; ?></td>
+                <td><?php echo $documentos[$i]->estado[0]->descripcion; ?></td>
                 <td><?php echo $documentos[$i]->archivo; ?></td>
                 <td class="text-center">
                   <a href="documento/editar/<?php echo $documentos[$i]->id; ?>" class="btn btn-info">Editar</a>
                   <a href="documento/eliminar/<?php echo $documentos[$i]->id; ?>" class="btn btn-danger">Eliminar</a>
                 </td>
               </tr>
-              <?php } ?>
-            </tbody>
-          </table>
-        </div>
+            <?php } ?>
+          </tbody>
+        </table>
       </div>
-      <div class="row">
-        <div class="col-xs-6 col-md-2">
-          <a href="documento/insertar" class="btn btn-primary">Agregar</a>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-2">
+        <a href="documento/insertar" class="btn btn-primary">Agregar</a>
+      </div>
     </div>
   </body>
   </html>
