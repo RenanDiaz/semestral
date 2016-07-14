@@ -15,13 +15,18 @@
             <tr>
               <th>#</th>
               <th>Descripci&oacute;n</th>
+              <th>Acci&oacute;n</th>
             </tr>
           </thead>
           <tbody>
             <?php for ($i = 0; $i < count($unidades); ++$i) { ?>
-              <tr class="link" id="<?php echo $unidades[$i]->id; ?>">
+              <tr id="<?php echo $unidades[$i]->id; ?>">
                 <td><?php echo $unidades[$i]->id; ?></td>
                 <td><?php echo $unidades[$i]->descripcion; ?></td>
+                <td class="text-center">
+                  <a href="unidad/editar/<?php echo $unidades[$i]->id; ?>" class="btn btn-info">Editar</a>
+                  <a href="unidad/eliminar/<?php echo $unidades[$i]->id; ?>" class="btn btn-danger">Eliminar</a>
+                </td>
               </tr>
               <?php } ?>
             </tbody>
@@ -30,15 +35,9 @@
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-2">
-          <a href="unidad/insertar" class="btn btn-info">Agregar</a>
+          <a href="unidad/insertar" class="btn btn-primary">Agregar</a>
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-      $(".link").click(function() {
-        var id = $(this).attr("id");
-        location.href = "unidad/editar/" + id;
-      });
-    </script>
   </body>
   </html>

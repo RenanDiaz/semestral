@@ -22,11 +22,12 @@
               <th>Tipo de documento</th>
               <th>Estado</th>
               <th>Archivo</th>
+              <th>Acci&oacute;n</th>
             </tr>
           </thead>
           <tbody>
             <?php for ($i = 0; $i < count($documentos); ++$i) { ?>
-              <tr class="link" id="<?php echo $documentos[$i]->id; ?>">
+              <tr id="<?php echo $documentos[$i]->id; ?>">
                 <td><?php echo $documentos[$i]->id; ?></td>
                 <td><?php echo $documentos[$i]->nombre; ?></td>
                 <td><?php echo $documentos[$i]->descripcion; ?></td>
@@ -36,6 +37,10 @@
                 <td><?php echo $documentos[$i]->tipo_documento; ?></td>
                 <td><?php echo $documentos[$i]->estado; ?></td>
                 <td><?php echo $documentos[$i]->archivo; ?></td>
+                <td class="text-center">
+                  <a href="documento/editar/<?php echo $documentos[$i]->id; ?>" class="btn btn-info">Editar</a>
+                  <a href="documento/eliminar/<?php echo $documentos[$i]->id; ?>" class="btn btn-danger">Eliminar</a>
+                </td>
               </tr>
               <?php } ?>
             </tbody>
@@ -44,14 +49,8 @@
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-2">
-          <a href="documento/insertar" class="btn btn-info">Agregar</a>
+          <a href="documento/insertar" class="btn btn-primary">Agregar</a>
         </div>
     </div>
-    <script type="text/javascript">
-      $(".link").click(function() {
-        var id = $(this).attr("id");
-        location.href = "documento/editar/" + id;
-      });
-    </script>
   </body>
   </html>

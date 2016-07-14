@@ -15,13 +15,18 @@
             <tr>
               <th>#</th>
               <th>Descripci&oacute;n</th>
+              <th>Acci&oacute;n</th>
             </tr>
           </thead>
           <tbody>
             <?php for ($i = 0; $i < count($tipos_documento); ++$i) { ?>
-              <tr class="link" id="<?php echo $tipos_documento[$i]->id; ?>">
+              <tr id="<?php echo $tipos_documento[$i]->id; ?>">
                 <td><?php echo $tipos_documento[$i]->id; ?></td>
                 <td><?php echo $tipos_documento[$i]->descripcion; ?></td>
+                <td class="text-center">
+                  <a href="tipo_documento/editar/<?php echo $tipos_documento[$i]->id; ?>" class="btn btn-info">Editar</a>
+                  <a href="tipo_documento/eliminar/<?php echo $tipos_documento[$i]->id; ?>" class="btn btn-danger">Eliminar</a>
+                </td>
               </tr>
               <?php } ?>
             </tbody>
@@ -30,14 +35,8 @@
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-2">
-          <a href="tipo_documento/insertar" class="btn btn-info">Agregar</a>
+          <a href="tipo_documento/insertar" class="btn btn-primary">Agregar</a>
         </div>
     </div>
-    <script type="text/javascript">
-      $(".link").click(function() {
-        var id = $(this).attr("id");
-        location.href = "tipo_documento/editar/" + id;
-      });
-    </script>
   </body>
   </html>
