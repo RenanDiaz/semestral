@@ -27,27 +27,51 @@
 
           <div class="form-group">
             <label for="fecha" class="control-label">Fecha</label>
-            <input name="fecha" placeholder="Fecha" type="text" class="form-control">
+            <input name="fecha" placeholder="Fecha" type="date" class="form-control">
           </div>
 
           <div class="form-group">
             <label for="gestor" class="control-label">Gestor</label>
-            <input name="gestor" placeholder="Gestor" type="text" class="form-control">
+            <?php
+            $options = array();
+            foreach($gestores as $gestor) {
+              $options[$gestor->id] = $gestor->nombre." ".$gestor->apellido;
+            }
+            $attributes = 'class="form-control"';
+            echo form_dropdown('gestor', $options, "", $attributes); ?>
           </div>
 
           <div class="form-group">
             <label for="unidad" class="control-label">Unidad</label>
-            <input name="unidad" placeholder="Unidad" type="text" class="form-control">
+            <?php
+            $options = array();
+            foreach($unidades as $unidad) {
+              $options[$unidad->id] = $unidad->descripcion;
+            }
+            $attributes = 'class="form-control"';
+            echo form_dropdown('unidad', $options, "", $attributes); ?>
           </div>
 
           <div class="form-group">
             <label for="tipo_documento" class="control-label">Tipo de documento</label>
-            <input name="tipo_documento" placeholder="Tipo de documento" type="text" class="form-control">
+            <?php
+            $options = array();
+            foreach($tipos_documento as $tipo_documento) {
+              $options[$tipo_documento->id] = $tipo_documento->descripcion;
+            }
+            $attributes = 'class="form-control"';
+            echo form_dropdown('tipo_documento', $options, "", $attributes); ?>
           </div>
 
           <div class="form-group">
             <label for="estado" class="control-label">Estado</label>
-            <input name="estado" placeholder="Estado" type="text" class="form-control">
+            <?php
+            $options = array();
+            foreach($estados as $estado) {
+              $options[$estado->id] = $estado->descripcion;
+            }
+            $attributes = 'class="form-control"';
+            echo form_dropdown('estado', $options, "", $attributes); ?>
           </div>
 
           <div class="form-group">

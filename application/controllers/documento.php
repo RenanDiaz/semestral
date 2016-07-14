@@ -7,32 +7,31 @@ class documento extends CI_Controller {
     $this->load->library('form_validation');
     $this->load->library('session');
     $this->load->model('documento_model');
+    $this->load->model('gestor_model');
+    $this->load->model('unidad_model');
+    $this->load->model('tipo_documento_model');
+    $this->load->model('estado_model');
   }
 
   public function index() {
     $documentos = $this->documento_model->get_documentos();
-
-    $gestor = $documentos[0]->gestor;
-    $this->load->model('gestor_model');
-    $documentos[0]->gestor = $this->gestor_model->get_gestor($gestor);
-
-    $unidad = $documentos[0]->unidad;
-    $this->load->model('unidad_model');
-    $documentos[0]->unidad = $this->unidad_model->get_unidad($unidad);
-
-    $tipo_documento = $documentos[0]->tipo_documento;
-    $this->load->model('tipo_documento_model');
-    $documentos[0]->tipo_documento = $this->tipo_documento_model->get_tipo_documento($tipo_documento);
-
-    $estado = $documentos[0]->estado;
-    $this->load->model('estado_model');
-    $documentos[0]->estado = $this->estado_model->get_estado($estado);
+    foreach ($documentos as $key => $documento) {
+      $documentos[$key]->gestor = $this->gestor_model->get_gestor($documento->gestor);
+      $documentos[$key]->unidad = $this->unidad_model->get_unidad($documento->unidad);
+      $documentos[$key]->tipo_documento = $this->tipo_documento_model->get_tipo_documento($documento->tipo_documento);
+      $documentos[$key]->estado = $this->estado_model->get_estado($documento->estado);
+    }
 
     $data['documentos'] = $documentos;
     $this->load->view('documentos_view', $data);
   }
 
   public function insertar() {
+    $data['gestores'] = $this->gestor_model->get_gestores();
+    $data['unidades'] = $this->unidad_model->get_unidades();
+    $data['tipos_documento'] = $this->tipo_documento_model->get_tipos_documento();
+    $data['estados'] = $this->estado_model->get_estados();
+
     $this->form_validation->set_rules('nombre', 'nombre', 'required');
     $this->form_validation->set_rules('descripcion', 'descripcion', 'required');
     $this->form_validation->set_rules('fecha', 'fecha', 'required');
@@ -44,7 +43,6 @@ class documento extends CI_Controller {
 
     if ($this->form_validation->run() == FALSE)
     {
-      $data = "";
       $this->load->view('documentos_insertar_view', $data);
     }
     else
@@ -67,6 +65,10 @@ class documento extends CI_Controller {
 
   public function editar($id) {
     $data['documento'] = $this->documento_model->get_documento($id);
+    $data['gestores'] = $this->gestor_model->get_gestores();
+    $data['unidades'] = $this->unidad_model->get_unidades();
+    $data['tipos_documento'] = $this->tipo_documento_model->get_tipos_documento();
+    $data['estados'] = $this->estado_model->get_estados();
 
     $this->form_validation->set_rules('nombre', 'nombre', 'required');
     $this->form_validation->set_rules('descripcion', 'descripcion', 'required');
