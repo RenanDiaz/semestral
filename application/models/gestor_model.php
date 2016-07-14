@@ -13,18 +13,6 @@ class gestor_model extends CI_Model {
     return $result;
   }
 
-  function get_nombre_apellido($id) {
-    $this->db->select('nombre');
-    $this->db->select('apellido');
-    $this->db->from('gestor');
-    $this->db->where('id', $id);
-
-    $query = $this->db->get();
-    $result = $query->result();
-
-    return $result;
-  }
-
   function get_gestor($id) {
     $this->db->from('gestor');
     $this->db->where('id', $id);
@@ -32,6 +20,6 @@ class gestor_model extends CI_Model {
     $query = $this->db->get();
     $result = $query->result();
 
-    return $result;
+    return $result[0];
   }
 }

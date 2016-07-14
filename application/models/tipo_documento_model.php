@@ -13,21 +13,10 @@ class tipo_documento_model extends CI_Model {
     return $result;
   }
 
-  function get_descripcion($id) {
-    $this->db->select('descripcion');
-    $this->db->from('tipo_documento');
-    $this->db->where('id', $id);
-
-    $query = $this->db->get();
-    $result = $query->result();
-
-    return $result;
-  }
-
   function get_tipo_documento($id) {
     $this->db->from('tipo_documento');
     $this->db->where('id', $id);
-    
+
     $query = $this->db->get();
     $result = $query->result();
 

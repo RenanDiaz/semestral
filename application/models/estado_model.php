@@ -13,18 +13,6 @@ class estado_model extends CI_Model {
     return $result;
   }
 
-  function get_descripcion($id) {
-    $this->db->select('descripcion');
-    $this->db->from('estado');
-    $this->db->where('id', $id);
-
-    $query = $this->db->get();
-    $result = $query->result();
-    $descripcion = $result[0]->descripcion;
-
-    return $descripcion;
-  }
-
   function get_estado($id) {
     $this->db->from('estado');
     $this->db->where('id', $id);

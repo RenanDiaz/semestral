@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Estados</title>
+  <title>Unidades</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/css/common.css"); ?>">
@@ -18,10 +18,10 @@
             </tr>
           </thead>
           <tbody>
-            <?php for ($i = 0; $i < count($estados); ++$i) { ?>
-              <tr class="link" id="<?php echo $estados[$i]->id; ?>">
-                <td><?php echo $estados[$i]->id; ?></td>
-                <td><?php echo $estados[$i]->descripcion; ?></td>
+            <?php for ($i = 0; $i < count($unidades); ++$i) { ?>
+              <tr class="link" id="<?php echo $unidades[$i]->id; ?>">
+                <td><?php echo $unidades[$i]->id; ?></td>
+                <td><?php echo $unidades[$i]->descripcion; ?></td>
               </tr>
               <?php } ?>
             </tbody>
@@ -30,14 +30,14 @@
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-2">
-          <a href="estado/insertar" class="btn btn-info">Agregar</a>
+          <a href="unidad/insertar" class="btn btn-info">Agregar</a>
         </div>
       </div>
     </div>
     <script type="text/javascript">
       $(".link").click(function() {
         var id = $(this).attr("id");
-        location.href = "estado/editar/" + id;
+        location.href = "unidad/editar/" + id;
       });
     </script>
   </body>
