@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Agregar unidad</title>
+  <title>Agregar gestor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
   <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/css/common.css"); ?>">
@@ -11,13 +11,18 @@
   <div class="container">
     <div class="row">
       <div class="col-md-offset-4 col-md-4 well">
-        <legend>Agregar unidad</legend>
-        <?php echo form_open("unidad/insertar"); ?>
+        <legend>Agregar gestor</legend>
+        <?php echo form_open("gestor/insertar"); ?>
         <fieldset>
 
           <div class="form-group">
-            <label for="descripcion" class="control-label">Unidad</label>
-            <input name="descripcion" placeholder="Unidad" type="text" class="form-control">
+            <label for="nombre" class="control-label">Nombre</label>
+            <input name="nombre" placeholder="Nombre" type="text" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="apellido" class="control-label">Apellido</label>
+            <input name="apellido" placeholder="Apellido" type="text" class="form-control">
           </div>
 
           <div class="form-group text-left">

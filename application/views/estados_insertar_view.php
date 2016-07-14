@@ -10,8 +10,9 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-4 well">
+      <div class="col-md-offset-4 col-md-4 well">
         <legend>Agregar estado</legend>
+        <?php echo form_open("estado/insertar"); ?>
         <fieldset>
 
           <div class="form-group">
@@ -24,6 +25,7 @@
             <input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger" value="Cancelar" onclick="window.history.back()"/>
           </div>
         </fieldset>
+        <?php echo form_close(); ?>
         <?php echo $this->session->flashdata('msg'); ?>
       </div>
     </div>

@@ -15,18 +15,63 @@ class documento extends CI_Controller {
     $this->load->view('documentos_view', $data);
   }
 
+  public function insertar() {
+    $this->form_validation->set_rules('nombre', 'nombre', 'required');
+    $this->form_validation->set_rules('descripcion', 'descripcion', 'required');
+    $this->form_validation->set_rules('fecha', 'fecha', 'required');
+    $this->form_validation->set_rules('gestor', 'gestor', 'required');
+    $this->form_validation->set_rules('unidad', 'unidad', 'required');
+    $this->form_validation->set_rules('tipo_documento', 'tipo_documento', 'required');
+    $this->form_validation->set_rules('estado', 'estado', 'required');
+    $this->form_validation->set_rules('archivo', 'archivo', 'required');
+
+    if ($this->form_validation->run() == FALSE)
+    {
+      $data = "";
+      $this->load->view('documentos_insertar_view', $data);
+    }
+    else
+    {
+      $data = array(
+        'nombre' => $this->input->post('nombre'),
+        'descripcion' => $this->input->post('descripcion'),
+        'fecha' => $this->input->post('fecha'),
+        'gestor' => $this->input->post('gestor'),
+        'unidad' => $this->input->post('unidad'),
+        'tipo_documento' => $this->input->post('tipo_documento'),
+        'estado' => $this->input->post('estado'),
+        'archivo' => $this->input->post('archivo')
+      );
+      $this->db->insert('documento', $data);
+      $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Documento agregado</div>');
+      redirect('documento');
+    }
+  }
+
   public function editar($id) {
-    $data['id'] = $id;
+    $data['documento'] = $this->documento_model->get_documento($id);
 
-    $data['descripcion'] = $this->documento_model->get_descripcion($id);
-
-    $this->form_validation->set_rules('descripcion', 'descripcion', 'trim|required');
+    $this->form_validation->set_rules('nombre', 'nombre', 'required');
+    $this->form_validation->set_rules('descripcion', 'descripcion', 'required');
+    $this->form_validation->set_rules('fecha', 'fecha', 'required');
+    $this->form_validation->set_rules('gestor', 'gestor', 'required');
+    $this->form_validation->set_rules('unidad', 'unidad', 'required');
+    $this->form_validation->set_rules('tipo_documento', 'tipo_documento', 'required');
+    $this->form_validation->set_rules('estado', 'estado', 'required');
+    $this->form_validation->set_rules('archivo', 'archivo', 'required');
 
     if ($this->form_validation->run() == FALSE) {
-      $this->load->view('documento_editar_view', $data);
+      $this->load->view('documentos_editar_view', $data);
     } else {
       $data = array(
+        'nombre' => $this->input->post('nombre'),
         'descripcion' => $this->input->post('descripcion'),
+        'fecha' => $this->input->post('fecha'),
+        'gestor' => $this->input->post('gestor'),
+        'unidad' => $this->input->post('unidad'),
+        'tipo_documento' => $this->input->post('tipo_documento'),
+        'estado' => $this->input->post('estado'),
+        'archivo' => $this->input->post('archivo')
       );
 
       $this->db->update('documento', $data);

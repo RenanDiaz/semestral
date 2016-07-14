@@ -42,6 +42,10 @@
           </table>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-6 col-md-2">
+          <a href="documento/insertar" class="btn btn-info">Agregar</a>
+        </div>
     </div>
     <script type="text/javascript">
       $(".link").click(function() {

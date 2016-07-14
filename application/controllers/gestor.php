@@ -15,16 +15,38 @@ class gestor extends CI_Controller {
     $this->load->view('gestores_view', $data);
   }
 
+  public function insertar() {
+    $this->form_validation->set_rules('nombre', 'nombre', 'trim|required');
+    $this->form_validation->set_rules('apellido', 'apellido', 'trim|required');
+    if ($this->form_validation->run() == FALSE)
+    {
+      $data = "";
+      $this->load->view('gestores_insertar_view', $data);
+    }
+    else
+    {
+      $data = array(
+        'nombre' => $this->input->post('nombre'),
+        'apellido' => $this->input->post('apellido')
+      );
+      $this->db->insert('gestor', $data);
+      $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Gestor agregado</div>');
+      redirect('gestor');
+    }
+  }
+
   public function editar($id) {
     $data['gestor'] = $this->gestor_model->get_gestor($id);
 
-    $this->form_validation->set_rules('descripcion', 'descripcion', 'trim|required');
+    $this->form_validation->set_rules('nombre', 'nombre', 'trim|required');
+    $this->form_validation->set_rules('apellido', 'apellido', 'trim|required');
 
     if ($this->form_validation->run() == FALSE) {
-      $this->load->view('gestor_editar_view', $data);
+      $this->load->view('gestores_editar_view', $data);
     } else {
       $data = array(
-        'descripcion' => $this->input->post('descripcion'),
+        'nombre' => $this->input->post('nombre'),
+        'apellido' => $this->input->post('apellido')
       );
 
       $this->db->update('gestor', $data);

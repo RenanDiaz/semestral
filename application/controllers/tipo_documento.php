@@ -15,15 +15,31 @@ class tipo_documento extends CI_Controller {
     $this->load->view('tipos_documento_view', $data);
   }
 
-  public function editar($id) {
-    $data['id'] = $id;
+  public function insertar() {
+    $this->form_validation->set_rules('descripcion', 'descripcion', 'required');
+    if ($this->form_validation->run() == FALSE)
+    {
+      $data = "";
+      $this->load->view('tipos_documento_insertar_view', $data);
+    }
+    else
+    {
+      $data = array(
+        'descripcion' => $this->input->post('descripcion')
+      );
+      $this->db->insert('tipo_documento', $data);
+      $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Tipo de documento agregado</div>');
+      redirect('tipo_documento');
+    }
+  }
 
-    $data['descripcion'] = $this->tipo_documento_model->get_descripcion($id);
+  public function editar($id) {
+    $data['tipo_documento'] = $this->tipo_documento_model->get_tipo_documento($id);
 
     $this->form_validation->set_rules('descripcion', 'descripcion', 'trim|required');
 
     if ($this->form_validation->run() == FALSE) {
-      $this->load->view('tipo_documento_editar_view', $data);
+      $this->load->view('tipos_documento_editar_view', $data);
     } else {
       $data = array(
         'descripcion' => $this->input->post('descripcion'),
