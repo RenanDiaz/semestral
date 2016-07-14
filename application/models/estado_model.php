@@ -6,7 +6,7 @@ class estado_model extends CI_Model {
 
   function get_estados() {
     $this->db->from('estado');
-    
+
     $query = $this->db->get();
     $result = $query->result();
 
@@ -20,8 +20,9 @@ class estado_model extends CI_Model {
 
     $query = $this->db->get();
     $result = $query->result();
+    $descripcion = $result[0]->descripcion;
 
-    return $result;
+    return $descripcion;
   }
 
   function get_estado($id) {
