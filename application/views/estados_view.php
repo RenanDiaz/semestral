@@ -21,7 +21,7 @@
           <tbody>
             <?php for ($i = 0; $i < count($estados); ++$i) { ?>
               <tr id="<?php echo $estados[$i]->id; ?>">
-                <td><?php echo $estados[$i]->id; ?></td>
+                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $estados[$i]->descripcion; ?></td>
                 <td class="text-center">
                   <a href="estado/editar/<?php echo $estados[$i]->id; ?>" class="btn btn-info">Editar</a>

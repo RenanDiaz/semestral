@@ -21,7 +21,7 @@
           <tbody>
             <?php for ($i = 0; $i < count($tipos_documento); ++$i) { ?>
               <tr id="<?php echo $tipos_documento[$i]->id; ?>">
-                <td><?php echo $tipos_documento[$i]->id; ?></td>
+                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $tipos_documento[$i]->descripcion; ?></td>
                 <td class="text-center">
                   <a href="tipo_documento/editar/<?php echo $tipos_documento[$i]->id; ?>" class="btn btn-info">Editar</a>

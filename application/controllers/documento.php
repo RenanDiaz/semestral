@@ -100,4 +100,10 @@ class documento extends CI_Controller {
       redirect('documento');
     }
   }
+
+  public function eliminar($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('documento');
+    redirect('documento');
+  }
 }

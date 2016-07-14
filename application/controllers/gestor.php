@@ -56,4 +56,10 @@ class gestor extends CI_Controller {
       redirect('gestor');
     }
   }
+
+  public function eliminar($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('gestor');
+    redirect('gestor');
+  }
 }

@@ -22,7 +22,7 @@
           <tbody>
             <?php for ($i = 0; $i < count($gestores); ++$i) { ?>
               <tr id="<?php echo $gestores[$i]->id; ?>">
-                <td><?php echo $gestores[$i]->id; ?></td>
+                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $gestores[$i]->nombre; ?></td>
                 <td><?php echo $gestores[$i]->apellido; ?></td>
                 <td class="text-center">

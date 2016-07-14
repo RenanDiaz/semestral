@@ -52,4 +52,10 @@ class unidad extends CI_Controller {
       redirect('unidad');
     }
   }
+
+  public function eliminar($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('unidad');
+    redirect('unidad');
+  }
 }

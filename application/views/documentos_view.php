@@ -28,7 +28,7 @@
           <tbody>
             <?php for ($i = 0; $i < count($documentos); ++$i) { ?>
               <tr id="<?php echo $documentos[$i]->id; ?>">
-                <td><?php echo $documentos[$i]->id; ?></td>
+                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $documentos[$i]->nombre; ?></td>
                 <td><?php echo $documentos[$i]->descripcion; ?></td>
                 <td><?php echo $documentos[$i]->fecha; ?></td>

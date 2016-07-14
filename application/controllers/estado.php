@@ -52,4 +52,10 @@ class estado extends CI_Controller {
       redirect('estado');
     }
   }
+
+  public function eliminar($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('estado');
+    redirect('estado');
+  }
 }

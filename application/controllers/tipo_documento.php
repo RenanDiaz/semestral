@@ -52,4 +52,10 @@ class tipo_documento extends CI_Controller {
       redirect('tipo_documento');
     }
   }
+
+  public function eliminar($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('tipo_documento');
+    redirect('tipo_documento');
+  }
 }

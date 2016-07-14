@@ -21,7 +21,7 @@
           <tbody>
             <?php for ($i = 0; $i < count($unidades); ++$i) { ?>
               <tr id="<?php echo $unidades[$i]->id; ?>">
-                <td><?php echo $unidades[$i]->id; ?></td>
+                <td><?php echo $i + 1; ?></td>
                 <td><?php echo $unidades[$i]->descripcion; ?></td>
                 <td class="text-center">
                   <a href="unidad/editar/<?php echo $unidades[$i]->id; ?>" class="btn btn-info">Editar</a>
